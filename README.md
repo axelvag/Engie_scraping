@@ -66,5 +66,8 @@ mkdir .env
 
 # .ENV
 
+Format to follow ->
+```bash
 LOGIN=....
 PASSWORD=.....
+```
