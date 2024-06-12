@@ -3,6 +3,7 @@ import argparse    # pour gerer les argv argc
 import requests
 import os                 # pour creer des fichier
 from bs4 import BeautifulSoup # pour extraire le html
+from datetime import datetime
 
 def scrapping_html(url):
     try:
@@ -16,11 +17,22 @@ def scrapping_html(url):
         # Créer le dossier "resultat" s'il n'existe pas
         if not os.path.exists('resultat'):
             os.makedirs('resultat')
-        
-         # Trouver le nom du prochain fichier à créer
-        file_name = 1
+    
+        #  # Trouver le nom du prochain fichier à créer
+        # file_name = 1
+        # while os.path.exists(f"resultat/{file_name}.txt"):
+        #     file_name += 1
+
+        # Obtenir la date et l'heure actuelles
+        current_time = datetime.now()
+        file_name = current_time.strftime("%d_%m_%Y_%H_%M")
+
+        # Vérifier si le fichier existe déjà et incrémenter un compteur pour le rendre unique
+        counter = 1
+        base_name = file_name
         while os.path.exists(f"resultat/{file_name}.txt"):
-            file_name += 1
+            file_name = f"{base_name}_{counter}"
+            counter += 1
 
         # html recuperer dans soup.prettify
         with open(f"resultat/{file_name}.txt", 'w', encoding='utf-8') as file:
