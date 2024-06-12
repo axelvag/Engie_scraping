@@ -21,6 +21,7 @@ pacman -S git
 pacman -S python
 pip install requests
 pip install beautifulsoup4
+pip install python-dotenv
 git clone https://github.com/axelvag/Scraping.git
 cd Scraping
 // then choose your file you want to launch with "cd ...."
@@ -33,8 +34,13 @@ Launch a bash terminal with the tool installed:
 - python
 - requests
 - beautifulsoup
+- python-dotenv
 
 ```bash
+pip install git
+pip install requests
+pip install beautifulsoup4
+pip install python-dotenv
 git clone https://github.com/axelvag/Scraping.git
 cd Scraping
 // then choose your file you want to launch with "cd ...."
