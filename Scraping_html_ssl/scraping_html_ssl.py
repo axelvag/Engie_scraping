@@ -6,43 +6,51 @@ from bs4 import BeautifulSoup # pour extraire le html
 from datetime import datetime
 from dotenv import load_dotenv
 from requests.auth import HTTPBasicAuth
+# import pandas as pd
+import csv
 
 # Charger et récup les variables d'environnement depuis le fichier .env
 load_dotenv()
 LOGIN = os.getenv('LOGIN')
 PASSWORD = os.getenv('PASSWORD')
 
-def scrapping_html(url):
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36'} 
+
+def create_file(soup):
+    # Créer le dossier "resultat" s'il n'existe pas
+    if not os.path.exists('resultat'):
+        os.makedirs('resultat')
+
+    # Obtenir la date et l'heure actuelles pour le filename
+    current_time = datetime.now()
+    file_name = current_time.strftime("%d_%m_%Y_%H_%M")
+
+    # Vérifier si le fichier existe déjà avec la meme heure
+    # sinon incrémenter un compteur a la fin pour le rendre unique
+    counter = 1
+    base_name = file_name
+    while os.path.exists(f"resultat/{file_name}.txt"):
+        file_name = f"{base_name}_{counter}"
+        counter += 1
+
+    # html recuperer dans soup.prettify
+    with open(f"resultat/{file_name}.txt", 'w', encoding='utf-8') as file:
+        file.write(soup.prettify())
+        print(f"HTML content has been written to resultat/{file_name}.txt")
+
+def scraping_html(url):
     try:
         print(LOGIN)
         print(PASSWORD)
-        response = requests.get(url, auth=HTTPBasicAuth(LOGIN, PASSWORD), verify=False)
+        response = requests.get(url, headers=headers, verify=False)
         response.raise_for_status()  # Raise an HTTPError for bad responses
+        
         html_content = response.text
         soup = BeautifulSoup(html_content, 'html.parser')
 
         print(soup.prettify())
 
-        # Créer le dossier "resultat" s'il n'existe pas
-        if not os.path.exists('resultat'):
-            os.makedirs('resultat')
-
-        # Obtenir la date et l'heure actuelles pour le filename
-        current_time = datetime.now()
-        file_name = current_time.strftime("%d_%m_%Y_%H_%M")
-
-        # Vérifier si le fichier existe déjà avec la meme heure
-        # sinon incrémenter un compteur a la fin pour le rendre unique
-        counter = 1
-        base_name = file_name
-        while os.path.exists(f"resultat/{file_name}.txt"):
-            file_name = f"{base_name}_{counter}"
-            counter += 1
-
-        # html recuperer dans soup.prettify
-        with open(f"resultat/{file_name}.txt", 'w', encoding='utf-8') as file:
-            file.write(soup.prettify())
-            print(f"HTML content has been written to resultat/{file_name}.txt")
+        create_file(soup)
 
     except requests.exceptions.RequestException as e:
         print(f"Failed to retrieve URL {url}. Error: {e}")
@@ -51,7 +59,7 @@ def scrapping_html(url):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
-        prog='scraping_html_new_file.py',
+        prog='scraping_html_ssl.py',
         description='A program to fetch and display the HTML content of a webpage given its URL.',
         epilog='Engie Vianeo Scraping'
     )
@@ -60,4 +68,4 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    scrapping_html(args.URL)
+    scraping_html(args.URL)
