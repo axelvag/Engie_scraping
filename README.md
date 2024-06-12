@@ -23,7 +23,7 @@ pip install requests
 pip install beautifulsoup4
 git clone https://github.com/axelvag/Scraping.git
 cd Scraping
-// then choose your file you want to lauch with "cd ...."
+// then choose your file you want to launch with "cd ...."
 ```
 
 ### Linux
@@ -37,5 +37,5 @@ Launch a bash terminal with the tool installed:
 ```bash
 git clone https://github.com/axelvag/Scraping.git
 cd Scraping
-// then choose your file you want to lauch with "cd ...."
+// then choose your file you want to launch with "cd ...."
 ```
