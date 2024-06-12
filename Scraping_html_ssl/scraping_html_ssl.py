@@ -4,10 +4,19 @@ import requests
 import os                 # pour creer des fichier
 from bs4 import BeautifulSoup # pour extraire le html
 from datetime import datetime
+from dotenv import load_dotenv
+from requests.auth import HTTPBasicAuth
+
+# Charger et récup les variables d'environnement depuis le fichier .env
+load_dotenv()
+LOGIN = os.getenv('LOGIN')
+PASSWORD = os.getenv('PASSWORD')
 
 def scrapping_html(url):
     try:
-        response = requests.get(url, verify=False)
+        print(LOGIN)
+        print(PASSWORD)
+        response = requests.get(url, auth=HTTPBasicAuth(LOGIN, PASSWORD), verify=False)
         response.raise_for_status()  # Raise an HTTPError for bad responses
         html_content = response.text
         soup = BeautifulSoup(html_content, 'html.parser')
