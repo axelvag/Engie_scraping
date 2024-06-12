@@ -62,3 +62,9 @@ cd Scraping
 mkdir .env
 // then choose your file you want to launch with "cd ...."
 ```
+
+
+# .ENV
+
+LOGIN=....
+PASSWORD=.....
