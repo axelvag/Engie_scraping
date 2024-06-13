@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+  <link href="/min/?g=css_ext&amp;v=240521" nonce="10367421" rel="stylesheet"/>
+  <link href="/api/style/css&amp;v=240521" nonce="10367421" rel="stylesheet"/>
+  <link href="/min/?g=css&amp;v=240521" nonce="10367421" rel="stylesheet"/>
+  <link href="/api/style/profile/favicon" nonce="10367421" rel="shortcut icon"/>
+  <script nonce="10367421" type="text/javascript">
+   var JS_FOLDER = "\/js\/";
+            var GOOGLE_KEY = "AIzaSyAoKg0_I3WMgjbpM6jwlffsWxXpW9NriI0";
+            var DECIMAL_SEPERATOR = ".";
+            var DATE_FORMAT = "DD-MM-YYYY";
+            var DATE_TIME_FORMAT = "DD-MM-YYYY HH:mm:ss";
+            var LANGUAGE = "en";
+            var CURRENCY = {"code":"EUR","exchangeRate":null,"symbol":"\u20ac","name":"Euro","supported":true};
+            var AUTOFOCUS = false;
+            var DARKMODE = 0;
+  </script>
+  <script nonce="10367421" src="/js/Language.php?lang=en&amp;v=240521">
+  </script>
+  <script nonce="10367421" src="/min/?g=js_ext&amp;v=240521">
+  </script>
+  <script nonce="10367421" src="/min/?g=js&amp;v=240521">
+  </script>
+  <title>
+   ENGIE Vianeo
+  </title>
+ </head>
+ <body class="hold-transition sidebar-mini layout-fixed text-sm skin-provider layout-navbar-fixed signed-out">
+  <div class="wrapper">
+   <!-- Main Header -->
+   <div class="d-block d-sm-none">
+    <a class="logo in_header_mobile" href="/">
+     <div class="logo-lg">
+     </div>
+    </a>
+   </div>
+   <header class="main-header navbar navbar-expand navbar-white navbar-light no-margin-header no_padding_left">
+    <div class="logo_box d-none d-sm-block">
+     <a class="logo in_menu" href="/">
+      <span class="logo-mini">
+      </span>
+      <span class="logo-lg">
+      </span>
+     </a>
+    </div>
+    <ul class="navbar-nav">
+     <li class="nav-item d-none d-sm-block">
+      <a class="nav-link" href="/Locations">
+       Charge point locations
+      </a>
+     </li>
+     <li class="nav-item d-block d-sm-none">
+      <a class="nav-link" href="/Locations">
+       <i class="fas fa-map-marked-alt">
+       </i>
+      </a>
+     </li>
+    </ul>
+    <div class="navbar-nav ml-auto">
+     <ul class="nav navbar-nav">
+      <li class="dropdown language-selection">
+       <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">
+        <span class="lang-sm lang-lbl" lang="en">
+        </span>
+        <span class="caret">
+        </span>
+       </a>
+       <ul class="dropdown-menu multi-level">
+        <li>
+         <a href="/Login/Login?lang=nl">
+          <span class="lang-sm lang-lbl" lang="nl">
+          </span>
+         </a>
+        </li>
+        <li class="dropdown-submenu pull-left">
+         <a href="#" tabindex="-1">
+          <span class="lang-sm" lang="nl-BE">
+          </span>
+          Belgium
+         </a>
+         <ul class="dropdown-menu">
+          <li>
+           <a href="/Login/Login?lang=nl-BE">
+            <span class="lang-lbl" lang="nl-BE">
+            </span>
+           </a>
+          </li>
+          <li>
+           <a href="/Login/Login?lang=fr-BE">
+            <span class="lang-lbl" lang="fr-BE">
+            </span>
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li>
+         <a href="/Login/Login?lang=en">
+          <span class="lang-sm lang-lbl" lang="en">
+          </span>
+         </a>
+        </li>
+        <li>
+         <a href="/Login/Login?lang=fr">
+          <span class="lang-sm lang-lbl" lang="fr">
+          </span>
+         </a>
+        </li>
+        <li>
+         <a href="/Login/Login?lang=de">
+          <span class="lang-sm lang-lbl" lang="de">
+          </span>
+         </a>
+        </li>
+        <li>
+         <a href="/Login/Login?lang=it">
+          <span class="lang-sm lang-lbl" lang="it">
+          </span>
+         </a>
+        </li>
+        <li>
+         <a href="/Login/Login?lang=es">
+          <span class="lang-sm lang-lbl" lang="es">
+          </span>
+         </a>
+        </li>
+        <li>
+         <a href="/Login/Login?lang=sk">
+          <span class="lang-sm lang-lbl" lang="sk">
+          </span>
+         </a>
+        </li>
+        <li>
+         <a href="/Login/Login?lang=hu">
+          <span class="lang-sm lang-lbl" lang="hu">
+          </span>
+         </a>
+        </li>
+        <li>
+         <a href="/Login/Login?lang=pl">
+          <span class="lang-sm lang-lbl" lang="pl">
+          </span>
+         </a>
+        </li>
+        <li>
+         <a href="/Login/Login?lang=cs">
+          <span class="lang-sm lang-lbl" lang="cs">
+          </span>
+         </a>
+        </li>
+       </ul>
+      </li>
+     </ul>
+    </div>
+   </header>
+   <div class="content-wrapper">
+    <form data-toggle="validator" enctype="multipart/form-data" id="GenId1" method="POST" name="GenId1">
+     <div class="login-page">
+      <div class="login-box">
+       <div class="card card-outline card-primary">
+        <div class="card-body">
+         <div class="hidden alert alert-success alert-dismissible">
+          <button aria-hidden="true" class="close" data-dismiss="alert" type="button">
+           ×
+          </button>
+          <h4>
+           <i class="icon fa fa-check">
+           </i>
+           Success
+          </h4>
+         </div>
+         <p class="login-box-msg">
+         </p>
+         <div class="input-group mb-3">
+          <input autofocus="" class="form-control" name="emailField" placeholder="Username" type="text"/>
+          <div class="input-group-append">
+           <div class="input-group-text">
+            <span class="far fa-envelope">
+            </span>
+           </div>
+          </div>
+         </div>
+         <div class="input-group mb-2">
+          <input autofocus="" class="form-control" name="passwordField" placeholder="Password" type="password"/>
+          <div class="input-group-append">
+           <div class="input-group-text">
+            <span class="fas fa-lock">
+            </span>
+           </div>
+          </div>
+         </div>
+         <div class="btn-group">
+          <button class="btn btn-primary" id="Login" name="Login" type="submit" value="Log in">
+           Log in
+          </button>
+         </div>
+         <p class="mb-1">
+          <a class="float-left mt-1 width-100" href="/ForgottenLogin" id="link17119448" target="">
+           Forgot your password?
+          </a>
+         </p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="footer-box">
+     </div>
+     <div class="partners-box d-none d-lg-block">
+      <a href="http://www.gireve.com/">
+       <img alt="Gireve" class="footer-logo-gireve" src="/resource/img/gireve.png"/>
+      </a>
+      <a href="http://www.eviolin.nl/">
+       <img alt="Eviolin" class="footer-logo-eviolin" src="/resource/img/eviolin.png"/>
+      </a>
+      <a href="https://www.hubject.com/">
+       <img alt="Hubject" class="footer-logo-hubject" src="/resource/img/hubject.png"/>
+      </a>
+      <a href="http://www.e-clearing.net/">
+       <img alt="E-clearing" class="footer-logo-eclearing" src="/resource/img/eclearing.png"/>
+      </a>
+      <a href="https://www.safe-ev.de/">
+       <img alt="SAFE" class="footer-logo-safe" height="22" src="/resource/img/safe.svg"/>
+      </a>
+      <img alt="ISO 27001" class="footer-logo-iso27001" height="80" src="/resource/img/iso27001.png"/>
+     </div>
+    </form>
+   </div>
+  </div>
+ </body>
+</html>

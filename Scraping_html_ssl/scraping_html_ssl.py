@@ -6,8 +6,6 @@ from bs4 import BeautifulSoup # pour extraire le html
 from datetime import datetime
 from dotenv import load_dotenv
 from requests.auth import HTTPBasicAuth
-# import pandas as pd
-import csv
 
 # Charger et récup les variables d'environnement depuis le fichier .env
 load_dotenv()
@@ -40,17 +38,33 @@ def create_file(soup):
 
 def scraping_html(url):
     try:
-        print(LOGIN)
-        print(PASSWORD)
-        response = requests.get(url, headers=headers, verify=False)
-        response.raise_for_status()  # Raise an HTTPError for bad responses
-        
-        html_content = response.text
-        soup = BeautifulSoup(html_content, 'html.parser')
+        # print(LOGIN)
+        # print(PASSWORD)
+        with requests.Session() as session:
+            # Effectuer la requête GET pour récupérer le formulaire
+            response = session.get(url, headers=headers, verify=False)
+            response.raise_for_status()
 
-        print(soup.prettify())
+            soup = BeautifulSoup(response.text, 'html.parser')
 
-        create_file(soup)
+            # Données de connexion
+            login_data = {
+                'username': LOGIN,  # LOGIN la var du .env
+                'password': PASSWORD  # PASSWORD la var du .env
+            }
+
+             # Simuler la connexion via une requête POST
+            login_url = url  # Modifier cette ligne si l'URL de connexion est différente
+            response = session.post(login_url, data=login_data, headers=headers, verify=False)
+            response.raise_for_status()
+
+            response = session.get(url, headers=headers, verify=False)
+            response.raise_for_status()
+
+            print(soup.prettify())
+
+            soup = BeautifulSoup(response.text, 'html.parser')
+            create_file(soup)
 
     except requests.exceptions.RequestException as e:
         print(f"Failed to retrieve URL {url}. Error: {e}")

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Hello world HTTP server example · YourBasic Go
+  </title>
+  <meta content="CODE EXAMPLE Line-by-line breakdown of a basic HTTP web server with client requests and responses." name="description"/>
+  <link href="/style.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet"/>
+  <link href="/res/favicon-16x16.png" rel="icon" type="image/png"/>
+  <link href="/res/favicon-32x32.png" rel="icon" type="image/png"/>
+  <link href="/res/favicon-96x96.png" rel="icon" type="image/png"/>
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1">
+  </script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-113104149-1');
+  </script>
+  <script type="application/ld+json">
+   {
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/http-server-example/"
+  },
+  "headline": "Hello world HTTP server example",
+  "image": [
+    "https://yourbasic.org/golang/hello-server.png"
+   ],
+  "datePublished": "2018-09-05T00:00:00&#43;0000",
+  "dateModified": "2019-06-18T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "CODE EXAMPLE Line-by-line breakdown of a basic HTTP web server with client requests and responses."
+}
+  </script>
+  <meta content="en_US" property="og:locale"/>
+  <meta content="article" property="og:type"/>
+  <meta content="Hello world HTTP server example" property="og:title"/>
+  <meta content="CODE EXAMPLE Line-by-line breakdown of a basic HTTP web server with client requests and responses." property="og:description"/>
+  <meta content="https://yourbasic.org/golang/http-server-example/" property="og:url"/>
+  <meta content="https://yourbasic.org/golang/hello-server.png" property="og:image"/>
+ </head>
+ <body>
+  <header>
+   <nav>
+    <ul>
+     <li>
+      <a href="/about/">
+       About
+      </a>
+     </li>
+     <li>
+      <a href="/">
+       Home
+      </a>
+     </li>
+     <li>
+      <a href="/algorithms/">
+       Algorithms
+      </a>
+     </li>
+     <li class="here">
+      <a href="/golang/">
+       Go
+      </a>
+     </li>
+    </ul>
+   </nav>
+  </header>
+  <main>
+   <article>
+    <h1>
+     Hello world HTTP server example
+    </h1>
+    <div class="tagline">
+     yourbasic.org/golang
+    </div>
+    <h2 id="a-basic-web-server">
+     A basic web server
+    </h2>
+    <p>
+     If you access the URL
+     <code>
+      http://localhost:8080/world
+     </code>
+     on a machine where the program below is running,
+you will be greeted by this page.
+    </p>
+    <p>
+     <img alt="Web browser localhost:8080" src="/golang/hello-server.png" style="border:1px solid grey;"/>
+    </p>
+    <pre tabindex="0"><code>package main
+
+import (
+    "fmt"
+    "net/http"
+)
+
+func main() {
+    http.HandleFunc("/", HelloServer)
+    http.ListenAndServe(":8080", nil)
+}
+
+func HelloServer(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, "Hello, %s!", r.URL.Path[1:])
+}
+</code></pre>
+    <ul>
+     <li>
+      The call to
+      <a href="https://golang.org/pkg/net/http/#HandleFunc">
+       <code>
+        http.HandleFunc
+       </code>
+      </a>
+      tells the
+      <a href="https://golang.org/pkg/net/http/">
+       <code>
+        net.http
+       </code>
+      </a>
+      package
+to handle all requests to the web root with the
+      <code>
+       HelloServer
+      </code>
+      function.
+     </li>
+     <li>
+      The call to
+      <a href="https://golang.org/pkg/net/http/#ListenAndServe">
+       <code>
+        http.ListenAndServe
+       </code>
+      </a>
+      tells the server to listen on the TCP network address
+      <code>
+       :8080
+      </code>
+      .
+This function blocks until the program is terminated.
+     </li>
+     <li>
+      Writing to an
+      <a href="https://golang.org/pkg/net/http/#ResponseWriter">
+       <code>
+        http.ResponseWriter
+       </code>
+      </a>
+      sends data to the HTTP client.
+     </li>
+     <li>
+      An
+      <a href="https://golang.org/pkg/net/http/#Request">
+       <code>
+        http.Request
+       </code>
+      </a>
+      is a data structure
+that represents a client HTTP request.
+     </li>
+     <li>
+      <code>
+       r.URL.Path
+      </code>
+      is the path component of the requested URL. In this case,
+      <code>
+       "/world"
+      </code>
+      is
+the path component of
+      <code>
+       "http://localhost:8080/world"
+      </code>
+      .
+     </li>
+    </ul>
+    <h2 id="further-reading-a-complete-wiki">
+     Further reading: a complete wiki
+    </h2>
+    <p>
+     The
+     <a href="https://golang.org/doc/articles/wiki/">
+      Writing Web Applications
+     </a>
+     tutorial
+shows how to extend this small example into a complete wiki.
+    </p>
+    <p>
+     The tutorial covers how to
+    </p>
+    <ul>
+     <li>
+      create a data structure with load and save methods,
+     </li>
+     <li>
+      use the
+      <a href="https://golang.org/pkg/net/http/">
+       <code>
+        net/http
+       </code>
+      </a>
+      package to build web applications,
+     </li>
+     <li>
+      use the
+      <a href="https://golang.org/pkg/html/template/">
+       <code>
+        html/template
+       </code>
+      </a>
+      package to process HTML templates,
+     </li>
+     <li>
+      use the
+      <a href="/golang/regexp-cheat-sheet/">
+       <code>
+        regexp
+       </code>
+      </a>
+      package to validate user input.
+     </li>
+    </ul>
+    <h3>
+     More code examples
+    </h3>
+    <p>
+     <a href="/golang/blueprint/">
+      <img src="/golang/blueprint-tiny.jpg" style="float:left; margin-right:1em;" title="Go blueprints: code for common tasks"/>
+     </a>
+     <a href="/golang/blueprint/">
+      Go blueprints: code for com­mon tasks
+     </a>
+     is a collection of handy code examples.
+    </p>
+    <div style="clear:both;">
+    </div>
+    <p style="margin-top:2em;">
+     <span style="position:relative;bottom:12px;">
+      <b>
+       Share
+       <span class="extra-content">
+        this page
+       </span>
+       :
+      </b>
+     </span>
+     <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fhttp-server-example%2f" title="Share on Facebook">
+      <img src="/res/facebook-logo.svg" width="36px"/>
+     </a>
+     <a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fhttp-server-example%2f&amp;title=Hello%20world%20HTTP%20server%20example" title="Share on Reddit">
+      <img src="/res/reddit-logo.svg" width="36px"/>
+     </a>
+     <span class="small-content" style="position:relative;bottom:2px;">
+      <a href="mailto:?subject=Hello%20world%20HTTP%20server%20example&amp;body=https%3a%2f%2fyourbasic.org%2fgolang%2fhttp-server-example%2f" title="Share by mail">
+       <img src="/res/mail-logo.svg" width="30px"/>
+      </a>
+     </span>
+    </p>
+   </article>
+   <aside>
+    <h2>
+     Most Read
+    </h2>
+    <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?">
+     <img src="/golang/angry-man-with-computer-mini.png"/>
+    </a>
+    <ul class="none">
+     <li>
+      <a href="/golang/gotcha/">
+       Do you make these Go coding mistakes?
+      </a>
+     </li>
+     <li>
+      <a href="/golang/advantages-over-java-python/">
+       Why Go? – Key advantages you may have overlooked
+      </a>
+     </li>
+     <li>
+      <a href="/golang/string-functions-reference-cheat-sheet/">
+       Go string handling overview [cheat sheet]
+      </a>
+     </li>
+     <li>
+      <a href="/golang/interfaces-explained/">
+       Type, value and equality of interfaces
+      </a>
+     </li>
+     <li>
+      <a href="/golang/concurrent-programming/">
+       Concurrent programming
+      </a>
+     </li>
+    </ul>
+    <p>
+     <a href="/golang/">
+      <strong>
+       See all 178 Go articles
+      </strong>
+     </a>
+    </p>
+   </aside>
+  </main>
+  <footer>
+   This work is licensed under a
+   <a alt="CC BY 3.0" href="http://creativecommons.org/licenses/by/3.0/" rel="license">
+    <span style="font-size:smaller;">
+     CC BY 3.0
+    </span>
+    license
+   </a>
+   .
+  </footer>
+ </body>
+</html>
