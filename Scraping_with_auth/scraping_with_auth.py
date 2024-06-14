@@ -47,7 +47,17 @@ def scraping_html(url):
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-dev-shm-usage')
 
-        service = Service(r'C:\Users\VG6589\OneDrive - ENGIE\Documents\chromedriver-win64\chromedriver.exe')  # Remplacez 'path/to/chromedriver' par le chemin réel vers ChromeDriver
+        chromedriver_path = r'C:\Users\VG6589\Downloads\chromedriver-win64\chromedriver.exe'
+        if os.path.exists(chromedriver_path):
+            print("Chromedriver file exists.")
+        else:
+            print("Chromedriver file does not exist or cannot be accessed.")
+        print(f"Chromedriver path: {chromedriver_path}")
+
+        # Chemin vers l'exécutable Chrome
+        options.binary_location = r'C:\Users\VG6589\Downloads\chrome-win64\chrome.exe'
+
+        service = Service(chromedriver_path)
         driver = webdriver.Chrome(service=service, options=options)
 
         driver.get(url)
