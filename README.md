@@ -35,6 +35,7 @@ pacman -S python
 pip install requests
 pip install beautifulsoup4
 pip install python-dotenv
+pacman -S mingw-w64-clang-x86_64-python-pandas
 git clone https://github.com/axelvag/Scraping.git
 cd Scraping
 // now we will create .env file with the secret var, so follow the schema below to fill the file correctly
